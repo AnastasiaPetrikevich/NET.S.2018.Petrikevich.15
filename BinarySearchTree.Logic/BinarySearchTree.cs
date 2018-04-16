@@ -14,12 +14,22 @@ namespace BinarySearchTree.Logic
     public sealed class BinarySearchTree<T> : IEnumerable<T>
     {
         #region Fields
+        /// <summary>
+        /// The head of  a tree.
+        /// </summary>
         private Node<T> head;
+
+        /// <summary>
+        /// The comparer.
+        /// </summary>
         private Comparison<T> comparer;
         #endregion
 
         #region Constructors
-
+        /// <summary>
+        /// Constructor with delegate.
+        /// </summary>
+        /// <param name="comparer"> Comparer. </param>
         public BinarySearchTree(Comparison<T> comparer = null)
         {
             if (comparer == null)
@@ -30,6 +40,11 @@ namespace BinarySearchTree.Logic
             this.comparer = comparer;
         }
 
+        /// <summary>
+        /// Constructor with delegate and list of ellements.
+        /// </summary>
+        /// /// <param name="elements">List of elements.</param>
+        /// <param name="comparer"> Comparer. </param>
         public BinarySearchTree(IEnumerable<T> elements, Comparison<T> comparer = null) : this(comparer)
         {
             if (elements == null)
@@ -43,9 +58,18 @@ namespace BinarySearchTree.Logic
             }
         }
 
+        /// <summary>
+        /// Constructor with interface.
+        /// </summary>
+        /// <param name="comparer"> Comparer. </param>
         public BinarySearchTree(IComparer<T> comparer) : this(comparer.Compare)
         { }
 
+        /// <summary>
+        /// Constructor with interface and list of ellements.
+        /// </summary>
+        /// /// <param name="elements">List of elements.</param>
+        /// <param name="comparer"> Comparer. </param>
         public BinarySearchTree(IEnumerable<T> elements, IComparer<T> comparer) : this(elements, comparer.Compare)
         { }
         #endregion
